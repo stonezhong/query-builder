@@ -81,6 +81,7 @@ module.exports = {
     div,
     and,
     or,
+    between,
     // SQL functions
     date,
     sum,
