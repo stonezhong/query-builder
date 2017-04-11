@@ -8,7 +8,7 @@ const FunctionExpression = require('./lib/expressions/function-expression');
 const BinaryExpression = require('./lib/expressions/binary-expression');
 const BetweenExpression = require('./lib/expressions/between-expression');
 const InExpression = require('./lib/expressions/in-expression');
-
+const VariableArgOpExpression = require('./lib/expressions/variable-arg-op-expression');
 /**
  *
  * @param {(ColumnDef|Expression)} column
@@ -48,12 +48,12 @@ function div(a, b) {
     return new BinaryExpression('/', a, b);
 }
 
-function and(a, b) {
-    return new BinaryExpression('AND', a, b);
+function and(...operands) {
+    return new VariableArgOpExpression('AND', ...operands);
 }
 
-function or(a, b) {
-    return new BinaryExpression('OR', a, b);
+function or(...operands) {
+    return new VariableArgOpExpression('OR', ...operands);
 }
 
 function between(subject, lowerBound, upperBound) {
