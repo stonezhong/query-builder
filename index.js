@@ -5,9 +5,11 @@ const Table = require('./lib/table');
 const Expression = require('./lib/expression');
 const { getExpression } = require('./lib/utils');
 const FunctionExpression = require('./lib/expressions/function-expression');
+const UnaryExpression = require('./lib/expressions/unary-expression');
 const BinaryExpression = require('./lib/expressions/binary-expression');
 const BetweenExpression = require('./lib/expressions/between-expression');
 const InExpression = require('./lib/expressions/in-expression');
+const InQueryExpression = require('./lib/expressions/in-query-expression');
 const VariableArgOpExpression = require('./lib/expressions/variable-arg-op-expression');
 /**
  *
@@ -69,7 +71,14 @@ function unix_millis(subject) {
 }
 
 function within(subject, ...args) {
+    if ((args.length === 1) && args[0].query) {
+        return new InQueryExpression(subject, ...args);
+    }
     return new InExpression(subject, ...args);
+}
+
+function not(subject) {
+    return new UnaryExpression('NOT', subject);
 }
 
 module.exports = {
@@ -81,7 +90,9 @@ module.exports = {
     div,
     and,
     or,
+    not,
     between,
+    within,
     // SQL functions
     date,
     sum,
