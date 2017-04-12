@@ -105,6 +105,10 @@ function not(subject) {
     return new UnaryExpression('NOT', subject);
 }
 
+function count(subject) {
+    return new UnaryExpression('COUNT', subject);
+}
+
 module.exports = {
     table,
     select,
@@ -116,6 +120,7 @@ module.exports = {
     and,
     or,
     not,
+    count,
     between,
     within,
     g,
