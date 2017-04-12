@@ -109,7 +109,22 @@ function count(subject) {
     return new UnaryExpression('COUNT', subject);
 }
 
+// TODO: merge with getExpression, do not copy & paste
+function literal(subject) {
+    if (_.isNumber(subject)) {
+        return new NumberLiteral(subject);
+    }
+    if (_.isBoolean(subject)) {
+        return new BooleanLiteral(subject);
+    }
+    if (_.isString(subject)) {
+        return new StringLiteral(subject);
+    }
+    throw "literal: unrecognized subject";
+}
+
 module.exports = {
+    literal,
     table,
     select,
     column,
