@@ -34,6 +34,10 @@ function eq(a, b) {
 }
 
 // SQL functions
+function count(subject) {
+    return new FunctionExpression('COUNT', subject);
+}
+
 function date(subject) {
     return new FunctionExpression('DATE', subject);
 }
@@ -114,6 +118,7 @@ module.exports = {
     l,
     le,
     // SQL functions
+    count,
     date,
     sum,
     timestamp_millis,
