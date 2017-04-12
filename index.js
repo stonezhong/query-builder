@@ -33,6 +33,10 @@ function eq(a, b) {
     return new BinaryExpression('=', a, b);
 }
 
+function like(a, b) {
+    return new BinaryExpression('LIKE', a, b);
+}
+
 // SQL functions
 function count(subject) {
     return new FunctionExpression('COUNT', subject);
@@ -107,6 +111,7 @@ module.exports = {
     column,
     // SQL operators
     eq,
+    like,
     div,
     and,
     or,
