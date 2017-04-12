@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const QueryBuilder = require('./lib/query-builder');
 const ColumnDef = require('./lib/column-def');
 const ColumnExpression = require('./lib/expressions/column-expression');
