@@ -12,9 +12,9 @@ const BetweenExpression = require('./lib/expressions/between-expression');
 const InExpression = require('./lib/expressions/in-expression');
 const InQueryExpression = require('./lib/expressions/in-query-expression');
 const VariableArgOpExpression = require('./lib/expressions/variable-arg-op-expression');
-const StringLiteral = require('./expressions/string-literal');
-const NumberLiteral = require('./expressions/number-literal');
-const BooleanLiteral = require('./expressions/boolean-literal');
+const StringLiteral = require('./lib/expressions/string-literal');
+const NumberLiteral = require('./lib/expressions/number-literal');
+const BooleanLiteral = require('./lib/expressions/boolean-literal');
 
 /**
  *
