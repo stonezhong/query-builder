@@ -50,6 +50,22 @@ function div(a, b) {
     return new BinaryExpression('/', a, b);
 }
 
+function g(a, b) {
+    return new BinaryExpression('>', a, b);
+}
+
+function ge(a, b) {
+    return new BinaryExpression('>=', a, b);
+}
+
+function l(a, b) {
+    return new BinaryExpression('<', a, b);
+}
+
+function le(a, b) {
+    return new BinaryExpression('<=', a, b);
+}
+
 function and(...operands) {
     return new VariableArgOpExpression('AND', ...operands);
 }
@@ -93,6 +109,10 @@ module.exports = {
     not,
     between,
     within,
+    g,
+    ge,
+    l,
+    le,
     // SQL functions
     date,
     sum,
