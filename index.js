@@ -167,6 +167,8 @@ module.exports = {
     sum,
     timestamp_millis,
     timestamp,
+    timestamp_add,
+    timestamp_sub,
     unix_millis,
     Duration: DurationExpression.Duration,
 }
