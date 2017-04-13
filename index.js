@@ -110,6 +110,10 @@ function not(subject) {
     return new UnaryExpression('NOT', subject);
 }
 
+function iff(condition, trueReturn, falseReturn) {
+    return new FunctionExpression('IF', condition, trueReturn, falseReturn);
+}
+
 // TODO: merge with getExpression, do not copy & paste
 function literal(subject) {
     if (_.isNumber(subject)) {
@@ -142,6 +146,7 @@ module.exports = {
     ge,
     l,
     le,
+    iff,
     // SQL functions
     count,
     date,
