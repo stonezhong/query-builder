@@ -6,6 +6,7 @@ const Table = require('./lib/table');
 const Expression = require('./lib/expression');
 const { getExpression } = require('./lib/utils');
 const FunctionExpression = require('./lib/expressions/function-expression');
+const DurationExpression = require('./lib/expressions/duration-expression');
 const UnaryExpression = require('./lib/expressions/unary-expression');
 const BinaryExpression = require('./lib/expressions/binary-expression');
 const BetweenExpression = require('./lib/expressions/between-expression');
@@ -95,6 +96,18 @@ function timestamp(subject) {
     return new FunctionExpression('TIMESTAMP', subject);
 }
 
+function timestamp_add(subject, duration) {
+    return new FunctionExpression('TIMESTAMP_ADD', subject, duration);
+}
+
+function timestamp_sub(subject, duration) {
+    return new FunctionExpression('TIMESTAMP_SUB', subject, duration);
+}
+
+function duration(number, unit) {
+    return new DurationExpression(number, unit);
+}
+
 function unix_millis(subject) {
     return new FunctionExpression('UNIX_MILLIS', subject);
 }
@@ -147,6 +160,7 @@ module.exports = {
     l,
     le,
     iff,
+    duration,
     // SQL functions
     count,
     date,
@@ -154,4 +168,5 @@ module.exports = {
     timestamp_millis,
     timestamp,
     unix_millis,
+    Duration: DurationExpression.Duration,
 }
