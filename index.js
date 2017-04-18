@@ -123,12 +123,12 @@ function not(subject) {
     return new UnaryExpression('NOT', subject);
 }
 
-function max(subject) {
-    return new UnaryExpression('MAX', subject);
+function max(expression) {
+    return new FunctionExpression('MAX', expression);
 }
 
-function min(subject) {
-    return new UnaryExpression('MIN', subject);
+function min(expression) {
+    return new FunctionExpression('MIN', expression);
 }
 
 function iff(condition, trueReturn, falseReturn) {
