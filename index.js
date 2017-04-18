@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const Types = require('./lib/types');
 const QueryBuilder = require('./lib/query-builder');
 const ColumnDef = require('./lib/column-def');
 const ColumnExpression = require('./lib/expressions/column-expression');
@@ -16,7 +17,7 @@ const VariableArgOpExpression = require('./lib/expressions/variable-arg-op-expre
 const StringLiteral = require('./lib/expressions/string-literal');
 const NumberLiteral = require('./lib/expressions/number-literal');
 const BooleanLiteral = require('./lib/expressions/boolean-literal');
-
+const CastExpression = require('./lib/expressions/cast-expression');
 /**
  *
  * @param {(ColumnDef|Expression)} column
@@ -119,8 +120,16 @@ function within(subject, ...args) {
     return new InExpression(subject, ...args);
 }
 
+function cast(subject, newType) {
+    return new CastExpression(subject, newType);
+}
+
 function not(subject) {
     return new UnaryExpression('NOT', subject);
+}
+
+function distinct(subject) {
+    return new UnaryExpression('DISTINCT', subject);
 }
 
 function max(expression) {
@@ -160,7 +169,9 @@ module.exports = {
     div,
     and,
     or,
+    cast,
     not,
+    distinct,
     max,
     min,
     between,
@@ -181,4 +192,6 @@ module.exports = {
     timestamp_sub,
     unix_millis,
     Duration: DurationExpression.Duration,
-}
+    Types,
+};
+
