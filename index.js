@@ -123,6 +123,14 @@ function not(subject) {
     return new UnaryExpression('NOT', subject);
 }
 
+function max(subject) {
+    return new UnaryExpression('MAX', subject);
+}
+
+function min(subject) {
+    return new UnaryExpression('MIN', subject);
+}
+
 function iff(condition, trueReturn, falseReturn) {
     return new FunctionExpression('IF', condition, trueReturn, falseReturn);
 }
@@ -153,6 +161,8 @@ module.exports = {
     and,
     or,
     not,
+    max,
+    min,
     between,
     within,
     g,
